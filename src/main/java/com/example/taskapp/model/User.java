@@ -8,6 +8,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -30,6 +31,16 @@ public class User {
     private int active;
     private String department;
     private Date dateAdded;
+
+    @OneToMany(fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL,
+            mappedBy = "user")
+    List<Task> tasks;
+
+    @OneToMany(fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL,
+            mappedBy = "user_message")
+    List<Message> messages;
 
 
 

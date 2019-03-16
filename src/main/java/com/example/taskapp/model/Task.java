@@ -3,10 +3,9 @@ package com.example.taskapp.model;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -22,4 +21,13 @@ public class Task {
     private String content;
     private String tag;
     private int status;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    User user;
+
+    @OneToMany(fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL,
+            mappedBy = "task")
+    List<TaskMessage> taskMessages;
 }

@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 @Data
 @NoArgsConstructor
 @Entity
-public class Message {
+public class TaskMessage {
     @Id
     @GeneratedValue
     private int id;
@@ -19,8 +19,9 @@ public class Message {
     private String tag;
 
     @ManyToOne
-    @JoinColumn(name = "user_message_id")
-    User user_message;
+    @JoinColumn(name = "task_id")
+    Task task;
+
 
 
 }
