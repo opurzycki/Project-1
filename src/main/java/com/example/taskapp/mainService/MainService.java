@@ -20,11 +20,18 @@ public class MainService {
     public boolean registerUser(User user){
         try {
             user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+            user.setActive(1);
+            user.setRole("ROLE_USER");
             userRepository.save(user);
             return true;
         } catch(NullPointerException ex){
             ex.printStackTrace();
         }
         return false;
+    }
+
+    public User getUser(String email){
+        User user = userRepository.findUserByEmail(email);
+        return user;
     }
 }

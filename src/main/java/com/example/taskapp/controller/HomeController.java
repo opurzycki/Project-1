@@ -14,10 +14,10 @@ import javax.validation.Valid;
 
 @Controller
 public class HomeController {
-    @GetMapping("/login")
-    public String login(){
-        return("login");
-    }
+//    @GetMapping("/login")
+//    public String login(){
+//        return("login");
+//    }
 
     @GetMapping("/")
     public String home(){
@@ -56,6 +56,11 @@ public class HomeController {
             mainService.registerUser(user);
             return "register";
         }
-    }
+
+        @GetMapping("/login")
+        public String login(){
+            return"login";
+        }
+}
 
 

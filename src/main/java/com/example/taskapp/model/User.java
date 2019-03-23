@@ -31,6 +31,7 @@ public class User {
     private int active;
     private String department;
     private Date dateAdded;
+    private String role;
 
     @OneToMany(fetch = FetchType.EAGER,
             cascade = CascadeType.ALL,
